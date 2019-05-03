@@ -8,7 +8,7 @@ class TodoForm extends React.Component {
     state = {
         title: "",
         description: "",
-        status: "",
+        status: false,
         created: null
     }
 
@@ -31,7 +31,7 @@ class TodoForm extends React.Component {
             db.ref('tasks/' + uid).push({
                 title: this.state.title,
                 description: this.state.description,
-                status: this.state.status,
+                status: false,
                 created: taskTime
 
             })
@@ -50,10 +50,10 @@ class TodoForm extends React.Component {
                         <label>Description</label>
                         <input placeholder='description' name="description" type="text" required onChange={this.handleChange} />
                     </Form.Field>
-                    <Form.Field>
+                    {/* <Form.Field>
                         <label>status</label>
                         <input placeholder='status' name="status" type="text" required onChange={this.handleChange} />
-                    </Form.Field>
+                    </Form.Field> */}
                     <Button className="btn waves-effect waves-light btn-floating pulse" type="submit" name="action" onClick={this.handleSubmit}>
                         <i className="material-icons right">send</i></Button>
                 </Form >
