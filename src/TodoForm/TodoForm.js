@@ -8,7 +8,7 @@ class TodoForm extends React.Component {
     state = {
         title: "",
         description: "",
-        status: false,
+        status: "todo",
         created: null
     }
 
