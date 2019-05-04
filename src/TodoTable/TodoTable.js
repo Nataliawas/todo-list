@@ -1,6 +1,7 @@
 import React from 'react'
 import { db } from '../config/firebase'
-import { Segment, Form, Checkbox } from 'semantic-ui-react'
+import { Segment } from 'semantic-ui-react'
+import './TodoTable.css'
 
 class TodoTable extends React.Component {
   state = {
@@ -28,21 +29,15 @@ class TodoTable extends React.Component {
     })
   }
 
-  handleCheckbox = (event) => {
-    console.log('checkbox')
-  }
 
   render() {
     return (
       <div>
-        {this.state.tasks.map(el =>
-          <div>
-            <Segment key={el.id}>
+        {this.state.tasks.sort((a,b)=>a.created-b.created ).map(el =>
+          <div key={el.id} className={`z-depth-1 task-segment`}>
+            <Segment className={`${el.status}`}>
               <p>{el.title}</p>
               <p>{el.description}</p>
-              <Form>  <Form.Field>
-                <Checkbox onChange={this.handleCheckbox} label='DONE' />
-              </Form.Field></Form>
             </Segment>
           </div>
         )}

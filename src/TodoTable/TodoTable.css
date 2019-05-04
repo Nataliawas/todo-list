@@ -1,0 +1,15 @@
+.todo {
+   background-color:#b2dfdb !important
+}
+
+.in_progress {
+    background-color: #4db6ac  !important
+ }
+
+ .done {
+    background-color: #009688 !important
+ }
+
+.task-segment {
+    margin: 2vh !important
+}

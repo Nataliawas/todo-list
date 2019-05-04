@@ -28,13 +28,13 @@ class TodoForm extends React.Component {
 
         const uid = uuid()
         const taskTime = getTaskTime()
-            db.ref('tasks/' + uid).push({
-                title: this.state.title,
-                description: this.state.description,
-                status: false,
-                created: taskTime
+        db.ref('tasks/' + uid).push({
+            title: this.state.title,
+            description: this.state.description,
+            status: 'todo',
+            created: taskTime
 
-            })
+        })
     }
 
     render() {
@@ -50,10 +50,6 @@ class TodoForm extends React.Component {
                         <label>Description</label>
                         <input placeholder='description' name="description" type="text" required onChange={this.handleChange} />
                     </Form.Field>
-                    {/* <Form.Field>
-                        <label>status</label>
-                        <input placeholder='status' name="status" type="text" required onChange={this.handleChange} />
-                    </Form.Field> */}
                     <Button className="btn waves-effect waves-light btn-floating pulse" type="submit" name="action" onClick={this.handleSubmit}>
                         <i className="material-icons right">send</i></Button>
                 </Form >
