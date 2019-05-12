@@ -1,7 +1,7 @@
 
 import React from 'react'
 import { Container, Button, Form } from 'semantic-ui-react'
-import { db } from '../config/firebase'
+import { db } from '../../config/firebase'
 
 class TodoForm extends React.Component {
 
@@ -50,8 +50,8 @@ class TodoForm extends React.Component {
                         <label>Description</label>
                         <input placeholder='description' name="description" type="text" required onChange={this.handleChange} />
                     </Form.Field>
-                    <Button className="btn waves-effect waves-light btn-floating pulse" type="submit" name="action" onClick={this.handleSubmit}>
-                        <i className="material-icons right">send</i></Button>
+                    <Button className="waves-effect waves-light btn" type="submit" name="action" onClick={this.handleSubmit}>
+                        <i className="material-icons">add</i></Button>
                 </Form >
             </Container>
         )

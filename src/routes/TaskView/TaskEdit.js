@@ -1,5 +1,5 @@
 import React from 'react';
-import { db } from '../config/firebase'
+import { db } from '../../config/firebase'
 
 class TaskEdit extends React.Component {
 

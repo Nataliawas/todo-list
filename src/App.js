@@ -1,26 +1,28 @@
 
-import React, { Component } from 'react';
-import TodoTable from './TodoTable/TodoTable'
-import TodoForm from '../src/TodoForm/TodoForm'
+import React from 'react';
+import TodoTable from './routes/TodoTable/TodoTable'
+import TodoForm from './routes/TodoForm/TodoForm'
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import TaskEdit from './TaskView/TaskEdit';
+import TaskEdit from './routes/TaskView/TaskEdit';
 
 
 
 
 function App() {
   return (
+    <Router>
     <div>
-      <TodoForm />
 
-      <TodoTable />
-      <Router>
+     <TodoTable />
         <div>
-          <Route path="/edit" component={TaskEdit} />
+          <Route exact path="/" component={TodoTable} />
+          <Route path="/addtodo" component={TodoForm} />
+          <Route path="/edit/:id" component={TaskEdit} />
         </div>
-      </Router>
-
+    
     </div>
+    </Router>
+
   );
 }
 

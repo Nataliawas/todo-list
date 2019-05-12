@@ -1,7 +1,9 @@
 import React from 'react'
-import { db } from '../config/firebase'
-import { Segment, Loader, Dimmer, Image } from 'semantic-ui-react'
+import { db } from '../../config/firebase'
+import { Segment, Button } from 'semantic-ui-react'
 import './TodoTable.css'
+
+import { Link } from 'react-router-dom'
 
 
 
@@ -31,16 +33,23 @@ class TodoTable extends React.Component {
     })
   }
 
-  renderTasks = () => {
 
+
+  renderView = () => {
+
+    const tasksSortedByDate = this.state.tasks.sort((a, b) => a.created - b.created)
 
     return (
       <div>
-        {this.state.tasks.sort((a, b) => a.created - b.created).map(el =>
+        <Link to={`/addtodo`}> <Button className="waves-effect waves-light btn" type="submit" name="action">
+          <i className="material-icons">add</i>Add new todo</Button></Link>
+        {tasksSortedByDate.map(el =>
           <div key={el.id} className={`z-depth-1 task-segment`}>
             <Segment className={`${el.status}`}>
               <p>{el.title}</p>
               <p>{el.description}</p>
+
+              <Link to={`/edit/${el.id}`}> <button><i className="small material-icons">edit</i></button></Link>
             </Segment>
           </div>
         )}
@@ -48,27 +57,18 @@ class TodoTable extends React.Component {
     )
   }
 
-  renderLoader = () => {
-    return (
-      <div >
-        <Segment>
-          <Dimmer active inverted>
-            <Loader inverted>Loading</Loader>
-          </Dimmer>
 
-          <Image src='/images/wireframe/short-paragraph.png' />
-        </Segment>
-      </div>
-    )
-  }
 
   render() {
 
     return (
-      <>
-        {this.state.tasks.length && this.renderTasks()}
-        {!this.state.tasks.length && this.renderLoader()}
-      </>
+      <div>
+
+        <div>
+          {this.renderView()}
+        </div>
+
+      </div>
     )
   }
 
