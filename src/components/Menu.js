@@ -1,0 +1,21 @@
+import React, { Component } from 'react'
+import { Menu } from 'semantic-ui-react'
+import { Link } from 'react-router-dom'
+import TodoForm from '../routes/TodoForm/TodoForm';
+export default class MenuTabular extends Component {
+    state = { activeItem: null }
+
+    handleItemClick = (e, { name }) => this.setState({ activeItem: name })
+
+    render() {
+        const { activeItem } = this.state
+
+        return (
+            <Menu tabular>
+                <Link to={"/"}> <Menu.Item name='Tasks' active={activeItem === 'Tasks'} onClick={this.handleItemClick} /></Link>
+                <Menu.Item name='Stats' active={activeItem === 'Stats'} onClick={this.handleItemClick} />
+                <Link to="/addtodo">  <Menu.Item name='Add new Todo' active={activeItem === 'Add new Todo'} onClick={this.handleItemClick} /></Link>
+            </Menu>
+        )
+    }
+}

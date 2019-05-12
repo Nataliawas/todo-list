@@ -40,9 +40,8 @@ class TodoTable extends React.Component {
     const tasksSortedByDate = this.state.tasks.sort((a, b) => a.created - b.created)
 
     return (
-      <div>
-        <Link to={`/addtodo`}> <Button className="waves-effect waves-light btn" type="submit" name="action">
-          <i className="material-icons">add</i>Add new todo</Button></Link>
+      <div className="tasks-list">
+     
         {tasksSortedByDate.map(el =>
           <div key={el.id} className={`z-depth-1 task-segment`}>
             <Segment className={`${el.status}`}>
