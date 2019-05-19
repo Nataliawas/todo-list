@@ -17,3 +17,21 @@
 .tasks-list {
    margin: 5vh !important;
 }
+
+.pagination-container {
+   display: flex;
+   flex-direction: row !important;
+   margin: 5vh 0;
+}
+
+.pagination-element {
+   font-size: 1,5em !important;
+}
+
+a {
+   text-decoration: none !important;
+}
+
+.pagination-element:hover {
+   cursor: pointer !important;
+}
