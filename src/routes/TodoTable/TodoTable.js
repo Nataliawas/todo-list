@@ -1,6 +1,6 @@
 import React from 'react'
 import { db } from '../../config/firebase'
-import { Segment } from 'semantic-ui-react'
+import { Segment, Grid, Statistic } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import './TodoTable.css'
 
@@ -74,6 +74,11 @@ class TodoTable extends React.Component {
   }
 
 
+// countInProgress = () => {
+//   const inProgess = this.state.tasks.filter(el => el.status === "in_progress")
+// }
+
+
   renderPagination = () => {
     return (
       <div className="pagination-container"  >
@@ -87,18 +92,47 @@ class TodoTable extends React.Component {
       </div>
     )
   }
-
+  renderStats = () => {
+    return (
+      <Statistic>
+        <Statistic.Value>{this.state.tasks.length}</Statistic.Value>
+        <Statistic.Label>All tasks</Statistic.Label>
+        <Statistic.Value>{this.state.tasks.filter(el => el.status === "in_progress").length}
+        </Statistic.Value>
+        <Statistic.Label>In progress</Statistic.Label>
+        <Statistic.Value>{this.state.tasks.filter(el => el.status === "todo").length}
+        </Statistic.Value>
+        <Statistic.Label>Todo</Statistic.Label>
+        <Statistic.Value>{this.state.tasks.filter(el => el.status === "done").length}
+        </Statistic.Value>
+        <Statistic.Label>Done</Statistic.Label>
+      </Statistic>
+   
+        
+  )
+  }
 
   render() {
 
     return (
       <div>
-        <div>
-          {this.renderView()}
-        </div>
-        <div>
-          {this.renderPagination()}
-        </div>
+        <Grid columns={2}>
+          <Grid.Row>
+            <Grid.Column width={9}>
+              <div>
+                {this.renderView()}
+              </div>
+              <div>
+                {this.renderPagination()}
+              </div>
+            </Grid.Column >
+            <Grid.Column width={3}>
+              <div>
+                {this.renderStats()}
+              </div>
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
       </div>
     )
   }
