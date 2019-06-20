@@ -1,6 +1,6 @@
 import React from 'react'
 import { db } from '../../config/firebase'
-import { Segment, Grid, Statistic } from 'semantic-ui-react'
+import { Segment, Grid, Statistic, Checkbox, Form } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import './TodoTable.css'
 
@@ -74,11 +74,6 @@ class TodoTable extends React.Component {
   }
 
 
-// countInProgress = () => {
-//   const inProgess = this.state.tasks.filter(el => el.status === "in_progress")
-// }
-
-
   renderPagination = () => {
     return (
       <div className="pagination-container"  >
@@ -107,15 +102,54 @@ class TodoTable extends React.Component {
         </Statistic.Value>
         <Statistic.Label>Done</Statistic.Label>
       </Statistic>
-   
-        
-  )
+    )
+  }
+
+  renderCheckbox = () => {
+    return (
+      <div>
+       <Form>
+      
+        <Form.Field>
+          <Checkbox
+            radio
+            label='in progress'
+            name='checkboxRadioGroup'
+            value='this'
+            checked={this.state.tasks.status === 'in_progress'}
+            onChange={this.handleChange}
+          />
+        </Form.Field>
+        <Form.Field>
+          <Checkbox
+            radio
+            label='todo'
+            name='checkboxRadioGroup'
+            value='that'
+            checked={this.state.tasks.status === 'todo'}
+            onChange={this.handleChange}
+          />
+        </Form.Field>
+        <Form.Field>
+          <Checkbox
+            radio
+            label='done'
+            name='checkboxRadioGroup'
+            value='that'
+            checked={this.state.tasks.status === 'done'}
+            onChange={this.handleChange}
+          />
+        </Form.Field>
+      </Form>
+      </div>
+    )
   }
 
   render() {
 
     return (
       <div>
+        {this.renderCheckbox()}
         <Grid columns={2}>
           <Grid.Row>
             <Grid.Column width={9}>
