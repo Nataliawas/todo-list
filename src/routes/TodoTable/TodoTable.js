@@ -12,7 +12,8 @@ class TodoTable extends React.Component {
   state = {
     tasks: [],
     currentPage: 1,
-    pageCount: []
+    pageCount: [],
+
   }
 
   componentDidMount() {
@@ -21,11 +22,10 @@ class TodoTable extends React.Component {
 
       Object.entries(snapshot.val()).forEach(elem => {
 
-        const id = Object.keys(elem[1])[0];
-
+        const id = elem[0]
         const task = {
           id: id,
-          ...elem[1][id]
+          ...elem[1]
         }
         tasks.push(task)
 
@@ -37,12 +37,10 @@ class TodoTable extends React.Component {
 
       this.setState({ pageCount })
 
-      console.log(pageCount)
-      console.log(this.state)
     })
   }
 
-  n
+
 
   renderView = () => {
 
@@ -70,7 +68,6 @@ class TodoTable extends React.Component {
 
   setPage = (event) => {
     this.setState({ currentPage: event.target.id })
-    console.log(event.target.id)
   }
 
 
@@ -105,42 +102,13 @@ class TodoTable extends React.Component {
     )
   }
 
+
+
+
   renderCheckbox = () => {
     return (
       <div>
-       <Form>
-      
-        <Form.Field>
-          <Checkbox
-            radio
-            label='in progress'
-            name='checkboxRadioGroup'
-            value='this'
-            checked={this.state.tasks.status === 'in_progress'}
-            onChange={this.handleChange}
-          />
-        </Form.Field>
-        <Form.Field>
-          <Checkbox
-            radio
-            label='todo'
-            name='checkboxRadioGroup'
-            value='that'
-            checked={this.state.tasks.status === 'todo'}
-            onChange={this.handleChange}
-          />
-        </Form.Field>
-        <Form.Field>
-          <Checkbox
-            radio
-            label='done'
-            name='checkboxRadioGroup'
-            value='that'
-            checked={this.state.tasks.status === 'done'}
-            onChange={this.handleChange}
-          />
-        </Form.Field>
-      </Form>
+
       </div>
     )
   }

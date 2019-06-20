@@ -9,7 +9,7 @@ class TodoForm extends React.Component {
         title: "",
         description: "",
         status: "todo",
-        created: null
+        created: null,
     }
 
     handleChange = event => {
@@ -17,22 +17,21 @@ class TodoForm extends React.Component {
     }
 
     handleSubmit = () => {
-        function uuid() {
-            return Math.floor(Math.random() * 100000000)
-        }
+     
 
         function getTaskTime() {
             return new Date().getTime()
         }
 
 
-        const uid = uuid()
+        
         const taskTime = getTaskTime()
-        db.ref('tasks/' + uid).push({
+        db.ref('tasks/').push({
             title: this.state.title,
             description: this.state.description,
             status: 'todo',
-            created: taskTime
+            created: taskTime,
+         
 
         })
     }
