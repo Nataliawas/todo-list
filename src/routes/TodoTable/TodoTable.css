@@ -1,13 +1,13 @@
 .todo {
-   background-color:#b2dfdb !important
+   border-bottom-color: #4db6ac  !important
 }
 
 .in_progress {
-    background-color: #4db6ac  !important
+    border-bottom-color: #4db6ac  !important
  }
 
  .done {
-    background-color: #009688 !important
+   border-bottom-color: #009688 !important
  }
 
 .task-segment {
@@ -16,8 +16,12 @@
 
 .tasks-list {
    margin: 5vh !important;
+  
 }
 
+/* .content {
+   background-image: url('https://thenorthernboy.com/wp-content/uploads/2019/03/IMG_4963-820x1024.jpg') !important
+} */
 .pagination-container {
    display: flex;
    flex-direction: row !important;
@@ -28,10 +32,18 @@
    font-size: 1,5em !important;
 }
 
-a {
-   text-decoration: none !important;
-}
-
 .pagination-element:hover {
    cursor: pointer !important;
 }
+
+a.no-decoration {
+   text-decoration: none !important;
+   color: black !important
+}
+
+.statusIcons {
+   display: flex;
+   justify-content: flex-end !important
+}
+
+

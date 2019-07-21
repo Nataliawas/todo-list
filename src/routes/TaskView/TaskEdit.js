@@ -1,37 +1,39 @@
 import React from 'react';
 import { db } from '../../config/firebase'
+import { Checkbox } from 'semantic-ui-react'
 
 class TaskEdit extends React.Component {
 
   state = {
     title: "",
-    description: ""
+    description: "",
+    status: ""
   }
 
-  handleChange = event => {
-    this.setState({ [event.target.name]: event.target.value });
-  }
+
 
   componentDidMount() {
 
 
     const id = this.props.match.params.id;
-    console.log(id + '              ajdi')
-   
+  
+
     db.ref(`tasks/${id}`).on('value', snapshot => {
       this.setState(snapshot.val())
     })
 
   }
 
-  handleSubmit = event => {
+  handleSubmit = () => {
 
     const id = this.props.match.params.id
-    const uid = this.props.match.params.uid
     db.ref(`tasks/${id}`).set(this.state).then(data => {
       this.props.history.push(`tasks/${id}`)
     })
   }
+
+
+  
 
   render() {
     return (

@@ -13,7 +13,7 @@ export default class MenuTabular extends Component {
             <div>
             <Menu tabular>
                 <Link to={"/"}> <Menu.Item name='Tasks' active={activeItem === 'Tasks'} onClick={this.handleItemClick} /></Link>
-                <Menu.Item name='Stats' active={activeItem === 'Stats'} onClick={this.handleItemClick} />
+                
                 <Link to="/addtodo">  <Menu.Item name='Add new Todo' active={activeItem === 'Add new Todo'} onClick={this.handleItemClick} /></Link>
             </Menu>
             </div>

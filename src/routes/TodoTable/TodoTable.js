@@ -1,6 +1,6 @@
 import React from 'react'
 import { db } from '../../config/firebase'
-import { Segment, Grid, Statistic, Checkbox, Form } from 'semantic-ui-react'
+import { Segment, Grid, Statistic, Button } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import './TodoTable.css'
 
@@ -41,7 +41,6 @@ class TodoTable extends React.Component {
   }
 
 
-
   renderView = () => {
 
 
@@ -51,13 +50,24 @@ class TodoTable extends React.Component {
       <div className="tasks-list">
 
         {tasksSortedByDate.filter((el, index) => index >= 5 * (this.state.currentPage - 1) && index <= 5 * this.state.currentPage - 1).map(el =>
-          <div key={el.id} className={`z-depth-1 task-segment`}>
-            <Segment className={`${el.status}`}>
-              <p>{el.title}</p>
-              <p>{el.description}</p>
+          <div key={el.id} className={`task-segment`}>
+            
+              <Segment className={`${el.status}`}>
+                <Grid>
+                  <Grid.Column  width={8} className="taskTitle">
+                    <p>{el.title}</p>
+                  </Grid.Column>
+                  <Grid.Column>
+                  <i className="small material-icons">bolt</i>
+                  <i className="small material-icons">check</i>
+                  </Grid.Column>
+                  <Grid.Column>
+                  <Link className="no-decoration" to={`/edit/${el.id}`}><i className="small material-icons">edit</i></Link>
+                  </Grid.Column>
+                </Grid>
 
-              <Link to={`/edit/${el.id}`}> <button><i className="small material-icons">edit</i></button></Link>
-            </Segment>
+              </Segment>
+            
           </div>
         )}
       </div>
@@ -103,21 +113,10 @@ class TodoTable extends React.Component {
   }
 
 
-
-
-  renderCheckbox = () => {
-    return (
-      <div>
-
-      </div>
-    )
-  }
-
   render() {
 
     return (
-      <div>
-        {this.renderCheckbox()}
+      <div className="content">
         <Grid columns={2}>
           <Grid.Row>
             <Grid.Column width={9}>

@@ -7,7 +7,6 @@ class TodoForm extends React.Component {
 
     state = {
         title: "",
-        description: "",
         status: "todo",
         created: null,
     }
@@ -28,7 +27,6 @@ class TodoForm extends React.Component {
         const taskTime = getTaskTime()
         db.ref('tasks/').push({
             title: this.state.title,
-            description: this.state.description,
             status: 'todo',
             created: taskTime,
          
@@ -44,10 +42,6 @@ class TodoForm extends React.Component {
                     <Form.Field>
                         <label>Title</label>
                         <input placeholder='Title' name="title" type="text" required onChange={this.handleChange} />
-                    </Form.Field>
-                    <Form.Field>
-                        <label>Description</label>
-                        <input placeholder='description' name="description" type="text" required onChange={this.handleChange} />
                     </Form.Field>
                     <Button className="waves-effect waves-light btn" type="submit" name="action" onClick={this.handleSubmit}>
                         <i className="material-icons">add</i></Button>
